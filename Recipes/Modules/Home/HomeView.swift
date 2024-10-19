@@ -12,12 +12,59 @@ struct HomeView: View {
     let viewModel: HomeViewModel
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            let _ = print(viewModel.viewState)
+            
+            switch viewModel.viewState {
+            case .loading:
+                ProgressView()
+                
+            case let .loaded(recipes):
+                List(recipes) { recipe in
+                    Button {
+                        viewModel.onRecipeTap(recipe)
+                    } label: {
+                        RecipeListItem(recipe: recipe)
+                    }
+                }
+                .listStyle(.inset)
+                
+            case .error:
+                errorView()
+            }
         }
-        .padding()
+        .navigationTitle("Recipes")
+        .onAppear { viewModel.onAppear() }
+        .animation(.smooth, value: viewModel.viewState)
+    }
+    
+    private func errorView() -> some View {
+        VStack {
+            Image(systemName: "exclamationmark.circle.fill")
+                .resizable()
+                .foregroundStyle(.secondary)
+                .frame(width: 75, height: 75)
+            
+            Text("Whoops")
+                .font(.title)
+                .fontWeight(.medium)
+            
+            Text("Something went wrong...")
+                .font(.body)
+                .fontWeight(.regular)
+                .foregroundStyle(.secondary)
+            
+            Button {
+                viewModel.onTryAgainButtonTap()
+            } label: {
+                Text("Try again")
+                    .font(.body)
+                    .padding(.horizontal)
+            }
+            .padding(.horizontal)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .padding(.top, 5)
+        }
     }
 }

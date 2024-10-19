@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Dependencies
 
 @MainActor
 @Observable
 final class HomeViewModel {
     
-//    @Published var recipes: [Recipe]?
+    private(set) var viewState: ViewState = .loading
     
     private weak var router: HomeRouter?
+    private var viewStateDebouncer: Task<(), any Error>?
     
     init(router: HomeRouter) {
         self.router = router
@@ -27,9 +29,46 @@ final class HomeViewModel {
         router?.onRecipeTap(recipe)
     }
     
+    func onTryAgainButtonTap() {
+        setViewState(.loading)
+        fetchRecipes()
+    }
+    
     private func fetchRecipes() {
+        @Dependency(\.recipesClient) var recipesClient
+        
         Task {
+            let result = await recipesClient.fetchRecipes()
             
+            switch result {
+            case let .success(recipes):
+                setViewState(.loaded(recipes))
+                
+            case .failure:
+                setViewState(.error)
+            }
         }
+    }
+    
+    private func setViewState(_ state: ViewState) {
+        guard state != .loading else {
+            viewState = .loading
+            return
+        }
+
+        // Debounces viewState changes for a better user experience
+        viewStateDebouncer = Task {
+            try await Task.sleep(for: .seconds(1))
+            viewState = state
+        }
+    }
+}
+
+extension HomeViewModel {
+    
+    enum ViewState: Equatable {
+        case loading
+        case loaded([Recipe])
+        case error
     }
 }

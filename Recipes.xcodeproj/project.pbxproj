@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D3D34492CC38D5000706A5F /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D34482CC38D5000706A5F /* Dependencies */; };
+		7D3D344B2CC38D5000706A5F /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D344A2CC38D5000706A5F /* DependenciesMacros */; };
+		7D3D34522CC3978800706A5F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D34512CC3978800706A5F /* Kingfisher */; };
 		7D910B942CC37FA100899A0E /* Flux in Frameworks */ = {isa = PBXBuildFile; productRef = 7D910B932CC37FA100899A0E /* Flux */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +30,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D3D34522CC3978800706A5F /* Kingfisher in Frameworks */,
 				7D910B942CC37FA100899A0E /* Flux in Frameworks */,
+				7D3D34492CC38D5000706A5F /* Dependencies in Frameworks */,
+				7D3D344B2CC38D5000706A5F /* DependenciesMacros in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +77,9 @@
 			name = Recipes;
 			packageProductDependencies = (
 				7D910B932CC37FA100899A0E /* Flux */,
+				7D3D34482CC38D5000706A5F /* Dependencies */,
+				7D3D344A2CC38D5000706A5F /* DependenciesMacros */,
+				7D3D34512CC3978800706A5F /* Kingfisher */,
 			);
 			productName = Recipes;
 			productReference = 7D910B5E2CC3730500899A0E /* Recipes.app */;
@@ -102,6 +111,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				7D910B922CC37FA100899A0E /* XCRemoteSwiftPackageReference "Flux" */,
+				7D3D34472CC38D5000706A5F /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				7D3D34502CC3978800706A5F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7D910B5F2CC3730500899A0E /* Products */;
@@ -271,10 +282,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,7 +294,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Debug;
 		};
@@ -310,10 +321,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,7 +333,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Release;
 		};
@@ -350,6 +361,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7D3D34472CC38D5000706A5F /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.9;
+			};
+		};
+		7D3D34502CC3978800706A5F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
 		7D910B922CC37FA100899A0E /* XCRemoteSwiftPackageReference "Flux" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TelemTobi/Flux.git";
@@ -361,6 +388,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7D3D34482CC38D5000706A5F /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3D34472CC38D5000706A5F /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		7D3D344A2CC38D5000706A5F /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3D34472CC38D5000706A5F /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
+		};
+		7D3D34512CC3978800706A5F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3D34502CC3978800706A5F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		7D910B932CC37FA100899A0E /* Flux */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7D910B922CC37FA100899A0E /* XCRemoteSwiftPackageReference "Flux" */;
