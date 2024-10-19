@@ -1,0 +1,15 @@
+{
+  "originHash" : "b57f1072a1402b6e72e1531f2b2dff1d41c40e96d69b7fdba3d75b7136a4d5d9",
+  "pins" : [
+    {
+      "identity" : "flux",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TelemTobi/Flux.git",
+      "state" : {
+        "revision" : "a2f687081283deb17bcdcd53316e4967ba05e3f5",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 3
+}

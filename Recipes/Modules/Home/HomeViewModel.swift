@@ -11,7 +11,7 @@ import Foundation
 @Observable
 final class HomeViewModel {
     
-    @Published var recipes: [Recipe]?
+//    @Published var recipes: [Recipe]?
     
     private weak var router: HomeRouter?
     
