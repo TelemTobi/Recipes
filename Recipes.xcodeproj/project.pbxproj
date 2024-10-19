@@ -10,6 +10,7 @@
 		7D3D34492CC38D5000706A5F /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D34482CC38D5000706A5F /* Dependencies */; };
 		7D3D344B2CC38D5000706A5F /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D344A2CC38D5000706A5F /* DependenciesMacros */; };
 		7D3D34522CC3978800706A5F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D34512CC3978800706A5F /* Kingfisher */; };
+		7D3D348F2CC3E09200706A5F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3D348E2CC3E09200706A5F /* KeychainAccess */; };
 		7D910B942CC37FA100899A0E /* Flux in Frameworks */ = {isa = PBXBuildFile; productRef = 7D910B932CC37FA100899A0E /* Flux */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 				7D910B942CC37FA100899A0E /* Flux in Frameworks */,
 				7D3D34492CC38D5000706A5F /* Dependencies in Frameworks */,
 				7D3D344B2CC38D5000706A5F /* DependenciesMacros in Frameworks */,
+				7D3D348F2CC3E09200706A5F /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,7 @@
 				7D3D34482CC38D5000706A5F /* Dependencies */,
 				7D3D344A2CC38D5000706A5F /* DependenciesMacros */,
 				7D3D34512CC3978800706A5F /* Kingfisher */,
+				7D3D348E2CC3E09200706A5F /* KeychainAccess */,
 			);
 			productName = Recipes;
 			productReference = 7D910B5E2CC3730500899A0E /* Recipes.app */;
@@ -113,6 +116,7 @@
 				7D910B922CC37FA100899A0E /* XCRemoteSwiftPackageReference "Flux" */,
 				7D3D34472CC38D5000706A5F /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 				7D3D34502CC3978800706A5F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7D3D348D2CC3E09200706A5F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7D910B5F2CC3730500899A0E /* Products */;
@@ -265,6 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Recipes/Base/Recipes.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Support/Resources/Preview Content\"";
@@ -272,6 +277,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow you to unlock sensitive data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -282,19 +288,20 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.3;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -304,6 +311,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Recipes/Base/Recipes.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Support/Resources/Preview Content\"";
@@ -311,6 +319,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow you to unlock sensitive data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -321,19 +330,20 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.3;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -377,6 +387,14 @@
 				minimumVersion = 8.1.0;
 			};
 		};
+		7D3D348D2CC3E09200706A5F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.2;
+			};
+		};
 		7D910B922CC37FA100899A0E /* XCRemoteSwiftPackageReference "Flux" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TelemTobi/Flux.git";
@@ -402,6 +420,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D3D34502CC3978800706A5F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		7D3D348E2CC3E09200706A5F /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3D348D2CC3E09200706A5F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		7D910B932CC37FA100899A0E /* Flux */ = {
 			isa = XCSwiftPackageProductDependency;

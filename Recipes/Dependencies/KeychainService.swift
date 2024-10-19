@@ -7,46 +7,50 @@
 
 import Foundation
 import Dependencies
-import Security
+import KeychainAccess
 
 struct KeychainService {
-    var storeRecipe: (Recipe) throws -> Void
-    var retrieveRecipe: (String) throws -> Recipe
+    var storeRecipe: (Recipe) async throws -> Void
+    var retrieveRecipe: (String) async throws -> Recipe
+    
+    private static let keychain = Keychain(
+        server: Bundle.main.bundleIdentifier ?? #file,
+        protocolType: .https
+    )
 }
 
 extension KeychainService: DependencyKey {
     static let liveValue = KeychainService(
         storeRecipe: { recipe in
             guard let data = try? JSONEncoder().encode(recipe) else {
-                throw(KeychainError.encodingError)
+                throw(Status.invalidEncoding)
             }
             
-            let query: [String: Any] = [
-                kSecClass as String: kSecClassGenericPassword,
-                kSecAttrService as String: Key.recipe.rawValue,
-                kSecValueData as String: data
-            ]
-            
-            let status = SecItemAdd(query as CFDictionary, nil)
-            
-            if status != errSecSuccess {
-                throw KeychainError.unhandledError(status: status)
-            }
+            try keychain
+                .accessibility(.whenUnlocked, authenticationPolicy: [.userPresence])
+                .set(data, key: recipe.id ?? "recipe")
         },
         retrieveRecipe: { recipeId in
+            let data = try keychain
+                .authenticationPrompt("Authenticate to unlock recipe")
+                .getData(recipeId)
             
+            guard let data else {
+                throw(Status.itemNotFound)
+            }
+            
+            guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
+                throw(Status.decode)
+            }
+            
+            return recipe
         }
     )
 }
 
-extension KeychainService {
-    fileprivate enum Key: String {
-        case recipe
+extension DependencyValues {
+    var keychainService: KeychainService {
+        get { self[KeychainService.self] }
+        set { self[KeychainService.self] = newValue }
     }
-}
-
-enum KeychainError: Error {
-    case noPassword
-    case encodingError
-    case unhandledError(status: OSStatus)
 }

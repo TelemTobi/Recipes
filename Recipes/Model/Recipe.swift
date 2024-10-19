@@ -23,7 +23,7 @@ struct Recipe: Codable, Equatable, Identifiable, Hashable {
     let thumb: URL?
     let country: String?
     
-    enum DifficultyLevel: Int, Decodable {
+    enum DifficultyLevel: Int, Codable {
         case easy = 0
         case medium = 1
         case hard = 2

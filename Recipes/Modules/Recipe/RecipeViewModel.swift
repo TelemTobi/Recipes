@@ -23,7 +23,16 @@ final class RecipeViewModel {
     }
     
     func onUnlockButtonTap() {
+        @Dependency(\.keychainService) var keychainService
         
+        Task {
+            do {
+                let recipe = try await keychainService.retrieveRecipe(recipeId)
+                viewState = .unlocked(recipe)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 

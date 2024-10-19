@@ -31,7 +31,14 @@ final class HomeViewModel {
             return
         }
         
-        router?.onRecipeTap(recipeId)
+        Task {
+            do {
+                try await lockRecipe(recipe)
+                router?.onRecipeTap(recipeId)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     func onTryAgainButtonTap() {
@@ -53,6 +60,11 @@ final class HomeViewModel {
                 setViewState(.error)
             }
         }
+    }
+    
+    private func lockRecipe(_ recipe: Recipe) async throws {
+        @Dependency(\.keychainService) var keychainService
+        try await keychainService.storeRecipe(recipe)
     }
     
     private func setViewState(_ state: ViewState) {
