@@ -8,16 +8,17 @@
 import Foundation
 import SwiftUI
 
-final class AppNavigator: ObservableObject, HomeRouter {
+@Observable
+final class AppNavigator: HomeRouter, RecipeRouter {
     
     public enum Destination: Hashable {
-        case details(Recipe)
+        case details(_ recipeId: String)
     }
     
-    @Published var path: [Destination] = []
+    var path: [Destination] = []
     
-    func onRecipeTap(_ recipe: Recipe) {
-        path.append(.details(recipe))
+    func onRecipeTap(_ recipeId: String) {
+        path.append(.details(recipeId))
     }
 }
 
@@ -25,15 +26,16 @@ extension AppNavigator {
     
     struct ContentView: View {
         
-        @ObservedObject private var navigator = AppNavigator()
+        @Bindable private var navigator = AppNavigator()
         
         var body: some View {
             NavigationStack(path: $navigator.path) {
                 HomeView(viewModel: HomeViewModel(router: navigator))
                     .navigationDestination(for: Destination.self) { destination in
                         switch destination {
-                        case let .details(recipe):
-                            Text(recipe.name ?? "Unknown") // TODO: Create DetailsView
+                        case let .details(recipeId):
+                            let viewModel = RecipeViewModel(router: navigator, recipeId: recipeId)
+                            RecipeView(viewModel: viewModel)
                         }
                     }
             }

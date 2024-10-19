@@ -26,7 +26,12 @@ final class HomeViewModel {
     }
     
     func onRecipeTap(_ recipe: Recipe) {
-        router?.onRecipeTap(recipe)
+        guard let recipeId = recipe.id else {
+            viewState = .error
+            return
+        }
+        
+        router?.onRecipeTap(recipeId)
     }
     
     func onTryAgainButtonTap() {

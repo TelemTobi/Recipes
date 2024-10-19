@@ -6,5 +6,5 @@
 //
 
 protocol HomeRouter: AnyObject {
-    func onRecipeTap(_ recipe: Recipe)
+    func onRecipeTap(_ recipeId: String)
 }
