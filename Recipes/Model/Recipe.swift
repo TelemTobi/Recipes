@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe: Decodable, Equatable, Identifiable, Hashable {
+struct Recipe: Codable, Equatable, Identifiable, Hashable {
     
     let id: String?
     let name: String?

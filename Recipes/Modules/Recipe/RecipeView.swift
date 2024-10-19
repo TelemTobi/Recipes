@@ -27,7 +27,7 @@ struct RecipeView: View {
     @ViewBuilder
     private func lockedContentView() -> some View {
         VStack {
-            Text("Recipe is Locked")
+            Text("Recipe is locked")
                 .font(.title)
                 .fontWeight(.medium)
             
