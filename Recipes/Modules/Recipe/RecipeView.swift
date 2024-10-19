@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeView: View {
     
@@ -21,6 +22,7 @@ struct RecipeView: View {
                 unlockedContentView(recipe)
             }
         }
+        .padding(.horizontal)
         .animation(.smooth, value: viewModel.viewState)
     }
     
@@ -46,8 +48,54 @@ struct RecipeView: View {
     
     @ViewBuilder
     private func unlockedContentView(_ recipe: Recipe) -> some View {
-        VStack {
+        ScrollView {
+            KFImage(recipe.image)
+                .fade(duration: 0.25)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .clipShape(.rect(cornerRadius: 8))
             
+            Text(recipe.name ?? "")
+                .font(.title)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+            
+            VStack(spacing: 16) {
+                Text(recipe.description ?? "")
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .multilineTextAlignment(.leading)
+                
+                ForEach(macros(for: recipe), id: \.0) { key, value in
+                    Divider()
+                    
+                    HStack {
+                        Text(key)
+                            .font(.body)
+                            .fontWeight(.regular)
+                        
+                        Spacer()
+                        
+                        Text(value)
+                            .font(.body)
+                            .fontWeight(.medium)
+                    }
+                }
+            }
+            .padding(.vertical, 16)
+        }
+    }
+    
+    private func macros(for recipe: Recipe) -> [(String, String)] {
+        [
+            ("Calories: ", recipe.calories),
+            ("Carbs: ", recipe.carbos),
+            ("Fats: ", recipe.fats),
+            ("Proteins: ", recipe.proteins)
+        ].compactMap { (key, value) in
+            guard let value else { return nil }
+            return (key, value)
         }
     }
 }
