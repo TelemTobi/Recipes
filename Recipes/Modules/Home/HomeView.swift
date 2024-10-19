@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Recipes
 //
 //  Created by Telem Tobi on 19/10/2024.
@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
+    
+    let viewModel: HomeViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -17,8 +20,4 @@ struct ContentView: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
