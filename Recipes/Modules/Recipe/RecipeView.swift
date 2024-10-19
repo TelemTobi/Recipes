@@ -24,6 +24,7 @@ struct RecipeView: View {
         }
         .padding(.horizontal)
         .animation(.smooth, value: viewModel.viewState)
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder
@@ -53,7 +54,7 @@ struct RecipeView: View {
                 .fade(duration: 0.25)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
+                .frame(width: 120, height: 120)
                 .clipShape(.rect(cornerRadius: 8))
             
             Text(recipe.name ?? "")

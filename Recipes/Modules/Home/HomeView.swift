@@ -13,8 +13,6 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            let _ = print(viewModel.viewState)
-            
             switch viewModel.viewState {
             case .loading:
                 ProgressView()
@@ -34,7 +32,7 @@ struct HomeView: View {
             }
         }
         .navigationTitle("Recipes")
-        .onAppear { viewModel.onAppear() }
+        .onFirstAppear { viewModel.onAppear() }
         .animation(.smooth, value: viewModel.viewState)
     }
     

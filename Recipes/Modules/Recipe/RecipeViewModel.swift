@@ -30,6 +30,7 @@ final class RecipeViewModel {
                 let recipe = try await keychainService.retrieveRecipe(recipeId)
                 viewState = .unlocked(recipe)
             } catch {
+                // TODO: Handle that error.. 🫶
                 print(error)
             }
         }

@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct RecipesApp: App {
+    
+    private let appController = AppController()
+    
     var body: some Scene {
         WindowGroup {
-            AppNavigator.ContentView()
+            switch appController.state {
+            case let .loggedIn(homeNavigator):
+                HomeNavigator.ContentView(
+                    navigator: homeNavigator
+                )
+            }
         }
     }
 }

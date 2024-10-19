@@ -36,6 +36,7 @@ final class HomeViewModel {
                 try await lockRecipe(recipe)
                 router?.onRecipeTap(recipeId)
             } catch {
+                // TODO: Handle that error.. 🫶
                 print(error)
             }
         }
